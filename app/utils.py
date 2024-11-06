@@ -4,7 +4,7 @@ import docx
 from io import BytesIO
 from fastapi import HTTPException
 
-# Extract text from uploaded files (PDF, DOCX, TXT)
+
 async def extract_text_from_file_util(file_content: BytesIO, filename: str):
     file_type = filename.split('.')[-1].lower()
 
@@ -20,7 +20,7 @@ async def extract_text_from_file_util(file_content: BytesIO, filename: str):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to extract text: {str(e)}")
 
-# Extract text from PDF using pdfplumber
+
 async def extract_text_from_pdf(file_content):
     try:
         with pdfplumber.open(file_content) as pdf:
@@ -33,7 +33,7 @@ async def extract_text_from_pdf(file_content):
         raise ValueError(f"Failed to extract text from PDF: {str(e)}")
 
 
-# Extract text from DOCX
+
 async def extract_text_from_docx(file_content):
     try:
         doc = docx.Document(file_content)
