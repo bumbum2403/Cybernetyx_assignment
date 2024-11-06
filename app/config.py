@@ -1,0 +1,1 @@
+CHROMADB_COLLECTION_NAME = "documents"
